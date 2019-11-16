@@ -177,6 +177,7 @@ class ObjectAjax extends BaseAjax
             if (count($scenarios) > 0) {
                 /**
                  * @var Scenario $scenario
+                 * TODO: A factoriser
                  */
                 foreach ($scenarios as $scenario) {
                     $scenariosResult[] = [

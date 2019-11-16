@@ -25,6 +25,7 @@ set -e
 
 function gen_css {
     COMPRESS=""
+    node vendor/node_modules/less/bin/lessc assets/css/vendor/AdminLTE.less assets/css/builded/AdminLTE.scss
     if [ $# -eq 0 ]; then
         COMPRESS="--style compressed"
     fi
@@ -38,8 +39,7 @@ function gen_css {
         sass --update --stop-on-error ${theme_file}:public/css/themes/$(basename "${theme_file}" .scss).css $COMPRESS
     done
   	# Path replace
-  	sed -i s#\"images/ui-#\"/assets/css/vendors/jquery-ui-bootstrap/images/ui-#g public/css/nextdom.css
-  	sed -i s#\"images/ui-#\"/assets/css/vendors/jquery-ui-bootstrap/images/ui-#g public/css/nextdom.mob.css
+  	sed -i s#\(images/ui-#\(/vendor/node_modules/jquery-ui-bootstrap/images/ui-#g public/css/nextdom.css
 }
 
 function gen_js {
@@ -170,12 +170,14 @@ function gen_js {
 }
 
 function copy_assets {
+  mkdir -p public/css/fonts
+  mkdir -p public/icons
   echo " >>> Copy icons"
-	cp -fr assets/icon public/
+	cp -fr assets/icon/*/fonts/* public/css/fonts/
+  cp -fr assets/icon/* public/icons/
+  rm -fr public/icons/*/fonts
 	echo " >>> Copy images"
 	cp -fr assets/img public/
-	gen_css
-	gen_js
 }
 
 function clean_cache {
@@ -212,7 +214,9 @@ if [ "$#" == 0 ]; then
     echo "To start automatic generation, add the --watch option"
 	  mkdir -p public/css
 	  mkdir -p public/js
-	  copy_assets;
+	  copy_assets
+    gen_css
+    gen_js
 	  clean_cache
 elif [ "$1" == "--watch" ]; then
 	  start;
@@ -220,4 +224,6 @@ elif [ "$1" == "--css" ]; then
 	  gen_css
 elif [ "$1" == "--js" ]; then
 	  gen_js
+else
+  copy_assets
 fi
