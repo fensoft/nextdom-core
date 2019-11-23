@@ -48,7 +48,7 @@ class DownloadManager
      * @param bool $forceConnectionStatus Booléen pour forcer l'état de la connexion.
      * @throws \Exception
      */
-    public static function init($forceConnectionStatus = null)
+    public static function Utils::init($forceConnectionStatus = null)
     {
         if ($forceConnectionStatus !== null) {
             self::$connectionStatus = $forceConnectionStatus;
@@ -122,7 +122,7 @@ class DownloadManager
                 $url = $url . '?' . $toAdd;
             }
         }
-        LogHelper::add('AlternativeMarketForJeedom', 'debug', 'Download ' . $url);
+        LogHelper::addDebug('AlternativeMarketForJeedom', 'Download ' . $url);
         return self::downloadContentWithCurl($url, $binary);
     }
 
