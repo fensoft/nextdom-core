@@ -30,13 +30,9 @@
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/report.ajax.php';
-    paramsAJAX.data = {
-        action: 'list',
-        id: _params.id,
-        type: _params.type
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Report', 'list');
+    paramsAJAX.data['id'] = _params.id;
+    paramsAJAX.data['type'] = _params.type;
     $.ajax(paramsAJAX);
 }
 
@@ -50,14 +46,10 @@ nextdom.report.get = function (_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/report.ajax.php';
-    paramsAJAX.data = {
-        action: 'get',
-        id: _params.id,
-        type: _params.type,
-        report: _params.report
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Report', 'get');
+    paramsAJAX.data['id'] = _params.id;
+    paramsAJAX.data['type'] = _params.type;
+    paramsAJAX.data['report'] = _params.report;
     $.ajax(paramsAJAX);
 }
 
@@ -71,14 +63,10 @@ nextdom.report.remove = function (_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/report.ajax.php';
-    paramsAJAX.data = {
-        action: 'remove',
-        id: _params.id,
-        type: _params.type,
-        report: _params.report
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Report', 'remove');
+    paramsAJAX.data['id'] = _params.id;
+    paramsAJAX.data['type'] = _params.type;
+    paramsAJAX.data['report'] = _params.report;
     $.ajax(paramsAJAX);
 }
 
@@ -92,12 +80,8 @@ nextdom.report.removeAll = function (_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/report.ajax.php';
-    paramsAJAX.data = {
-        action: 'removeAll',
-        id: _params.id,
-        type: _params.type
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Report', 'removeAll');
+    paramsAJAX.data['id'] = _params.id;
+    paramsAJAX.data['type'] = _params.type;
     $.ajax(paramsAJAX);
 }

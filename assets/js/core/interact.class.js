@@ -29,14 +29,10 @@ nextdom.interact.remove = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/interact.ajax.php';
-    paramsAJAX.data = {
-        action: "remove",
-        id: _params.id
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Interact', 'remove');
+    paramsAJAX.data['id'] = _params.id;
     $.ajax(paramsAJAX);
-}
+};
 
 
 nextdom.interact.get = function(_params) {
@@ -49,14 +45,10 @@ nextdom.interact.get = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/interact.ajax.php';
-    paramsAJAX.data = {
-        action: "byId",
-        id: _params.id
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Interact', 'byId');
+    paramsAJAX.data['id'] = _params.id;
     $.ajax(paramsAJAX);
-}
+};
 
 nextdom.interact.save = function(_params) {
     var paramsRequired = ['interact'];
@@ -68,14 +60,10 @@ nextdom.interact.save = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/interact.ajax.php';
-    paramsAJAX.data = {
-        action: 'save',
-        interact: json_encode(_params.interact),
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Interact', 'save');
+    paramsAJAX.data['interact'] = json_encode(_params.interact);
     $.ajax(paramsAJAX);
-}
+};
 
 nextdom.interact.regenerateInteract = function(_params) {
     var paramsRequired = [];
@@ -87,13 +75,9 @@ nextdom.interact.regenerateInteract = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/interact.ajax.php';
-    paramsAJAX.data = {
-        action: 'regenerateInteract',
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Interact', 'regenerateInteract');
     $.ajax(paramsAJAX);
-}
+};
 
 nextdom.interact.execute = function(_params) {
     var paramsRequired = ['query'];
@@ -105,11 +89,7 @@ nextdom.interact.execute = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/interact.ajax.php';
-    paramsAJAX.data = {
-        action: 'execute',
-        query: _params.query,
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Interact', 'execute');
+    paramsAJAX.data['query'] = _params.query;
     $.ajax(paramsAJAX);
-}
+};

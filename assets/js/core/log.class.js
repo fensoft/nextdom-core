@@ -33,11 +33,7 @@ nextdom.log.list = function (_params) {
     return;
   }
   var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-  var paramsAJAX = nextdom.private.getParamsAJAX(params);
-  paramsAJAX.url = 'core/ajax/log.ajax.php';
-  paramsAJAX.data = {
-    action: 'list',
-  };
+  var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Log', 'list');
   $.ajax(paramsAJAX);
 };
 
@@ -53,11 +49,7 @@ nextdom.log.removeAll = function (_params) {
     return;
   }
   var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-  var paramsAJAX = nextdom.private.getParamsAJAX(params);
-  paramsAJAX.url = 'core/ajax/log.ajax.php';
-  paramsAJAX.data = {
-    action: 'removeAll',
-  };
+  var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Log', 'removeAll');
   $.ajax(paramsAJAX);
 };
 
@@ -73,14 +65,10 @@ nextdom.log.get = function (_params) {
     return;
   }
   var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-  var paramsAJAX = nextdom.private.getParamsAJAX(params);
-  paramsAJAX.url = 'core/ajax/log.ajax.php';
-  paramsAJAX.data = {
-    action: 'get',
-    log: _params.log
-  };
+  var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Log', 'get');
+    paramsAJAX.data['log'] = _params.log;
   $.ajax(paramsAJAX);
-}
+};
 
 nextdom.log.remove = function (_params) {
   var paramsRequired = ['log'];
@@ -94,14 +82,10 @@ nextdom.log.remove = function (_params) {
     return;
   }
   var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-  var paramsAJAX = nextdom.private.getParamsAJAX(params);
-  paramsAJAX.url = 'core/ajax/log.ajax.php';
-  paramsAJAX.data = {
-    action: 'remove',
-    log: _params.log
-  };
+  var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Log', 'remove');
+  paramsAJAX.data['log'] = _params.log;
   $.ajax(paramsAJAX);
-}
+};
 
 nextdom.log.clear = function (_params) {
   var paramsRequired = ['log'];
@@ -115,12 +99,8 @@ nextdom.log.clear = function (_params) {
     return;
   }
   var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-  var paramsAJAX = nextdom.private.getParamsAJAX(params);
-  paramsAJAX.url = 'core/ajax/log.ajax.php';
-  paramsAJAX.data = {
-    action: 'clear',
-    log: _params.log
-  };
+  var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Log', 'clear');
+  paramsAJAX.data['log'] = _params.log;
   $.ajax(paramsAJAX);
 }
 

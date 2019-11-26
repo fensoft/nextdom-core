@@ -47,13 +47,9 @@ nextdom.scenario.all = function (_params) {
     params.success(nextdom.scenario.cache.all);
     return;
   }
-  var paramsAJAX = nextdom.private.getParamsAJAX(params);
-  paramsAJAX.url = 'core/ajax/scenario.ajax.php';
-  paramsAJAX.data = {
-    action: 'all',
-  };
+  var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Scenario', 'all');
   $.ajax(paramsAJAX);
-}
+};
 
 nextdom.scenario.saveAll = function (_params) {
   var paramsRequired = ['scenarios'];
@@ -66,14 +62,10 @@ nextdom.scenario.saveAll = function (_params) {
   }
   delete nextdom.scenario.cache.all
   var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-  var paramsAJAX = nextdom.private.getParamsAJAX(params);
-  paramsAJAX.url = 'core/ajax/scenario.ajax.php';
-  paramsAJAX.data = {
-    action: 'saveAll',
-    scenarios: json_encode(_params.scenarios),
-  };
+  var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Scenario', 'saveAll');
+  paramsAJAX.data['scenarios'] = json_encode(_params.scenarios);
   $.ajax(paramsAJAX);
-}
+};
 
 nextdom.scenario.toHtml = function (_params) {
   var paramsRequired = ['id', 'version'];
@@ -96,15 +88,11 @@ nextdom.scenario.toHtml = function (_params) {
     return;
   }
   var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-  var paramsAJAX = nextdom.private.getParamsAJAX(params);
-  paramsAJAX.url = 'core/ajax/scenario.ajax.php';
-  paramsAJAX.data = {
-    action: 'toHtml',
-    id: ($.isArray(_params.id)) ? json_encode(_params.id) : _params.id,
-    version: _params.version
-  };
+  var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Scenario', 'toHtml');
+  paramsAJAX.data['id'] = ($.isArray(_params.id)) ? json_encode(_params.id) : _params.id;
+  paramsAJAX.data['version'] = _params.version;
   $.ajax(paramsAJAX);
-}
+};
 
 
 nextdom.scenario.changeState = function (_params) {
@@ -117,15 +105,11 @@ nextdom.scenario.changeState = function (_params) {
     return;
   }
   var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-  var paramsAJAX = nextdom.private.getParamsAJAX(params);
-  paramsAJAX.url = 'core/ajax/scenario.ajax.php';
-  paramsAJAX.data = {
-    action: 'changeState',
-    id: _params.id,
-    state: _params.state
-  };
+  var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Scenario', 'changeState');
+  paramsAJAX.data['id'] = _params.id;
+  paramsAJAX.data['state'] = _params.state;
   $.ajax(paramsAJAX);
-}
+};
 
 nextdom.scenario.getTemplate = function (_params) {
   var paramsRequired = [];
@@ -137,13 +121,9 @@ nextdom.scenario.getTemplate = function (_params) {
     return;
   }
   var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-  var paramsAJAX = nextdom.private.getParamsAJAX(params);
-  paramsAJAX.url = 'core/ajax/scenario.ajax.php';
-  paramsAJAX.data = {
-    action: 'getTemplate',
-  };
+  var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Scenario', 'getTemplate');
   $.ajax(paramsAJAX);
-}
+};
 
 nextdom.scenario.convertToTemplate = function (_params) {
   var paramsRequired = ['id'];
@@ -155,15 +135,11 @@ nextdom.scenario.convertToTemplate = function (_params) {
     return;
   }
   var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-  var paramsAJAX = nextdom.private.getParamsAJAX(params);
-  paramsAJAX.url = 'core/ajax/scenario.ajax.php';
-  paramsAJAX.data = {
-    action: 'convertToTemplate',
-    id: _params.id,
-    template: _params.template || '',
-  };
+  var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Scenario', 'convertToTemplate');
+  paramsAJAX.data['id'] = _params.id;
+  paramsAJAX.data['template'] = _params.template || '';
   $.ajax(paramsAJAX);
-}
+};
 
 nextdom.scenario.removeTemplate = function (_params) {
   var paramsRequired = ['template'];
@@ -175,14 +151,10 @@ nextdom.scenario.removeTemplate = function (_params) {
     return;
   }
   var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-  var paramsAJAX = nextdom.private.getParamsAJAX(params);
-  paramsAJAX.url = 'core/ajax/scenario.ajax.php';
-  paramsAJAX.data = {
-    action: 'removeTemplate',
-    template: _params.template,
-  };
+  var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Scenario', 'removeTemplate');
+  paramsAJAX.data['template'] = _params.template;
   $.ajax(paramsAJAX);
-}
+};
 
 nextdom.scenario.loadTemplateDiff = function (_params) {
   var paramsRequired = ['template', 'id'];
@@ -194,16 +166,12 @@ nextdom.scenario.loadTemplateDiff = function (_params) {
     return;
   }
   var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-  var paramsAJAX = nextdom.private.getParamsAJAX(params);
-  paramsAJAX.url = 'core/ajax/scenario.ajax.php';
-  paramsAJAX.data = {
-    action: 'loadTemplateDiff',
-    template: _params.template,
-    id: _params.id,
-  };
+  var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Scenario', 'loadTemplateDiff');
+  paramsAJAX.data['action'] = 'loadTemplateDiff';
+  paramsAJAX.data['template'] = _params.template;
+  paramsAJAX.data['id'] = _params.id;
   $.ajax(paramsAJAX);
-}
-
+};
 
 nextdom.scenario.applyTemplate = function (_params) {
   var paramsRequired = ['template', 'id', 'convert'];
@@ -215,16 +183,12 @@ nextdom.scenario.applyTemplate = function (_params) {
     return;
   }
   var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-  var paramsAJAX = nextdom.private.getParamsAJAX(params);
-  paramsAJAX.url = 'core/ajax/scenario.ajax.php';
-  paramsAJAX.data = {
-    action: 'applyTemplate',
-    template: _params.template,
-    id: _params.id,
-    convert: _params.convert,
-  };
+  var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Scenario', 'applyTemplate');
+  paramsAJAX.data['template'] = _params.template;
+  paramsAJAX.data['id'] = _params.id;
+  paramsAJAX.data['convert'] = _params.convert;
   $.ajax(paramsAJAX);
-}
+};
 
 nextdom.scenario.refreshValue = function (_params) {
   if (!isset(_params.global) || !_params.global) {
@@ -233,7 +197,7 @@ nextdom.scenario.refreshValue = function (_params) {
       return;
     }
   }
-  if ($('.scenario[data-scenario_id=' + _params.scenario_id + ']').html() == undefined) {
+  if ($('.scenario[data-scenario_id=' + _params.scenario_id + ']').html() === undefined) {
     return;
   }
   var version = 'dashboard';
@@ -251,13 +215,9 @@ nextdom.scenario.refreshValue = function (_params) {
     return;
   }
   var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-  var paramsAJAX = nextdom.private.getParamsAJAX(params);
-  paramsAJAX.url = 'core/ajax/scenario.ajax.php';
-  paramsAJAX.data = {
-    action: 'toHtml',
-    id: _params.scenario_id,
-    version: _params.version || version
-  };
+  var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Scenario', 'toHtml');
+  paramsAJAX.data['id'] = _params.scenario_id;
+  paramsAJAX.data['version'] = _params.version || version;
   $.ajax(paramsAJAX);
   
 };
@@ -274,13 +234,9 @@ nextdom.scenario.copy = function (_params) {
   }
   delete nextdom.scenario.cache.all
   var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-  var paramsAJAX = nextdom.private.getParamsAJAX(params);
-  paramsAJAX.url = 'core/ajax/scenario.ajax.php';
-  paramsAJAX.data = {
-    action: 'copy',
-    id: _params.id,
-    name: _params.name
-  };
+  var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Scenario', 'copy');
+  paramsAJAX.data['id'] = _params.id;
+  paramsAJAX.data['name'] = _params.name;
   $.ajax(paramsAJAX);
 };
 
@@ -295,12 +251,8 @@ nextdom.scenario.get = function (_params) {
     return;
   }
   var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-  var paramsAJAX = nextdom.private.getParamsAJAX(params);
-  paramsAJAX.url = 'core/ajax/scenario.ajax.php';
-  paramsAJAX.data = {
-    action: 'get',
-    id: _params.id
-  };
+  var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Scenario', 'get');
+  paramsAJAX.data['id'] = _params.id;
   $.ajax(paramsAJAX);
 };
 
@@ -315,12 +267,8 @@ nextdom.scenario.save = function (_params) {
   }
   delete nextdom.scenario.cache.all
   var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-  var paramsAJAX = nextdom.private.getParamsAJAX(params);
-  paramsAJAX.url = 'core/ajax/scenario.ajax.php';
-  paramsAJAX.data = {
-    action: 'save',
-    scenario: json_encode(_params.scenario)
-  };
+  var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Scenario', 'save');
+  paramsAJAX.data['scenario'] = json_encode(_params.scenario);
   $.ajax(paramsAJAX);
 };
 
@@ -335,12 +283,8 @@ nextdom.scenario.remove = function (_params) {
   }
   delete nextdom.scenario.cache.all
   var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-  var paramsAJAX = nextdom.private.getParamsAJAX(params);
-  paramsAJAX.url = 'core/ajax/scenario.ajax.php';
-  paramsAJAX.data = {
-    action: 'remove',
-    id: _params.id
-  };
+  var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Scenario', 'remove');
+  paramsAJAX.data['id'] = _params.id;
   $.ajax(paramsAJAX);
 };
 
@@ -354,12 +298,8 @@ nextdom.scenario.emptyLog = function (_params) {
     return;
   }
   var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-  var paramsAJAX = nextdom.private.getParamsAJAX(params);
-  paramsAJAX.url = 'core/ajax/scenario.ajax.php';
-  paramsAJAX.data = {
-    action: 'emptyLog',
-    id: _params.id
-  };
+  var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Scenario', 'emptyLog');
+  paramsAJAX.data['id'] = _params.id;
   $.ajax(paramsAJAX);
 };
 
@@ -410,12 +350,8 @@ nextdom.scenario.testExpression = function (_params) {
     return;
   }
   var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-  var paramsAJAX = nextdom.private.getParamsAJAX(params);
-  paramsAJAX.url = 'core/ajax/scenario.ajax.php';
-  paramsAJAX.data = {
-    action: 'testExpression',
-    expression: _params.expression
-  };
+  var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Scenario', 'testExpression');
+  paramsAJAX.data['expression'] = _params.expression;
   $.ajax(paramsAJAX);
 };
 
@@ -429,11 +365,7 @@ nextdom.scenario.setOrder = function(_params) {
     return;
   }
   var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-  var paramsAJAX = nextdom.private.getParamsAJAX(params);
-  paramsAJAX.url = 'core/ajax/scenario.ajax.php';
-  paramsAJAX.data = {
-    action: 'setOrder',
-    scenarios: json_encode(_params.scenarios)
-  };
+  var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Scenario', 'setOrder');
+  paramsAJAX.data['scenarios'] = json_encode(_params.scenarios);
   $.ajax(paramsAJAX);
 };

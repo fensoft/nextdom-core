@@ -31,15 +31,11 @@
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/plan.ajax.php';
-    paramsAJAX.data = {
-        action: 'remove',
-        id: _params.id || '',
-        link_type: _params.link_type || '',
-        link_id: _params.link_id || '',
-        planHeader_id: _params.planHeader_id || ''
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Plan', 'remove');
+    paramsAJAX.data['id'] = _params.id || '';
+    paramsAJAX.data['link_type'] = _params.link_type || '';
+    paramsAJAX.data['link_id'] = _params.link_id || '';
+    paramsAJAX.data['planHeader_id'] = _params.planHeader_id || '';
     $.ajax(paramsAJAX);
 };
 
@@ -53,12 +49,8 @@ nextdom.plan.execute = function (_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/plan.ajax.php';
-    paramsAJAX.data = {
-        action: 'execute',
-        id: _params.id
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Plan', 'execute');
+    paramsAJAX.data['id'] = _params.id;
     $.ajax(paramsAJAX);
 };
 
@@ -76,12 +68,8 @@ nextdom.plan.save = function (_params) {
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
 
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/plan.ajax.php';
-    paramsAJAX.data = {
-        action: 'save',
-        plans: json_encode(_params.plans),
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Plan', 'save');
+    paramsAJAX.data['plans'] = json_encode(_params.plans);
     $.ajax(paramsAJAX);
 };
 
@@ -96,12 +84,8 @@ nextdom.plan.byId = function (_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/plan.ajax.php';
-    paramsAJAX.data = {
-        action: 'get',
-        id: _params.id
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Plan', 'get');
+    paramsAJAX.data['id'] = _params.id;
     $.ajax(paramsAJAX);
 };
 
@@ -115,13 +99,9 @@ nextdom.plan.getObjectPlan = function (_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/plan.ajax.php';
-    paramsAJAX.data = {
-        action: 'getObjectPlan',
-        id: _params.id,
-        version: _params.version || 'dplan'
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Plan', 'getObjectPlan');
+    paramsAJAX.data['id'] = _params.id;
+    paramsAJAX.data['version'] = _params.version || 'dplan';
     $.ajax(paramsAJAX);
 };
 
@@ -135,13 +115,9 @@ nextdom.plan.create = function (_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/plan.ajax.php';
-    paramsAJAX.data = {
-        action: 'create',
-        plan: json_encode(_params.plan),
-        version: _params.version
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Plan', 'create');
+    paramsAJAX.data['plan'] = json_encode(_params.plan);
+    paramsAJAX.data['version'] = _params.version;
     $.ajax(paramsAJAX);
 };
 
@@ -155,15 +131,11 @@ nextdom.plan.copy = function (_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/plan.ajax.php';
-    paramsAJAX.data = {
-        action: 'copy',
-        id: _params.id || '',
-        link_type: _params.link_type || '',
-        link_id: _params.link_id || '',
-        planHeader_id: _params.planHeader_id || ''
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Plan', 'copy');
+    paramsAJAX.data['id'] = _params.id || '';
+    paramsAJAX.data['link_type'] = _params.link_type || '';
+    paramsAJAX.data['link_id'] = _params.link_id || '';
+    paramsAJAX.data['planHeader_id'] = _params.planHeader_id || '';
     $.ajax(paramsAJAX);
 };
 
@@ -177,14 +149,10 @@ nextdom.plan.byPlanHeader = function (_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/plan.ajax.php';
-    paramsAJAX.data = {
-        action: 'planHeader',
-        planHeader_id: _params.id,
-        noHtml : _params.noHtml,
-        version: _params.version || 'dplan'
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Plan', 'planHeader');
+    paramsAJAX.data['planHeader_id'] = _params.id;
+    paramsAJAX.data['noHtml'] = _params.noHtml;
+    paramsAJAX.data['version'] = _params.version || 'dplan';
     $.ajax(paramsAJAX);
 };
 
@@ -198,12 +166,8 @@ nextdom.plan.removeImageHeader = function (_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/plan.ajax.php';
-    paramsAJAX.data = {
-        action: 'removeImageHeader',
-        id: _params.planHeader_id
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Plan', 'removeImageHeader');
+    paramsAJAX.data['id'] = _params.planHeader_id;
     $.ajax(paramsAJAX);
 };
 
@@ -217,12 +181,8 @@ nextdom.plan.saveHeader = function (_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/plan.ajax.php';
-    paramsAJAX.data = {
-        action: 'savePlanHeader',
-        planHeader: json_encode(_params.planHeader)
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Plan', 'savePlanHeader');
+    paramsAJAX.data['planHeader'] = json_encode(_params.planHeader);
     $.ajax(paramsAJAX);
 };
 
@@ -236,13 +196,9 @@ nextdom.plan.copyHeader = function (_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/plan.ajax.php';
-    paramsAJAX.data = {
-        action: 'copyPlanHeader',
-        id: _params.id,
-        name: _params.name
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Plan', 'copyPlanHeader');
+    paramsAJAX.data['id'] = _params.id;
+    paramsAJAX.data['name'] = _params.name;
     $.ajax(paramsAJAX);
 };
 
@@ -256,12 +212,8 @@ nextdom.plan.removeHeader = function (_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/plan.ajax.php';
-    paramsAJAX.data = {
-        action: 'removePlanHeader',
-        id: _params.id
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Plan', 'removePlanHeader');
+    paramsAJAX.data['id'] = _params.id;
     $.ajax(paramsAJAX);
 };
 
@@ -275,13 +227,9 @@ nextdom.plan.getHeader = function (_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/plan.ajax.php';
-    paramsAJAX.data = {
-        action: 'getPlanHeader',
-        id: _params.id,
-        code: _params.code
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Plan', 'getPlanHeader');
+    paramsAJAX.data['id'] = _params.id;
+    paramsAJAX.data['code'] = _params.code;
     $.ajax(paramsAJAX);
 };
 
@@ -304,10 +252,6 @@ nextdom.plan.allHeader = function (_params) {
         params.success(nextdom.plan.cache.all);
         return;
     }
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/plan.ajax.php';
-    paramsAJAX.data = {
-        action: 'allHeader',
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Plan', 'allHeader');
     $.ajax(paramsAJAX);
-}
+};

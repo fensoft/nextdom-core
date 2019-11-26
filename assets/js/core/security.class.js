@@ -29,14 +29,10 @@ nextdom.security.remove = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/connection.ajax.php';
-    paramsAJAX.data = {
-        action: 'remove',
-        id: _params.id
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Connection', 'remove');
+    paramsAJAX.data['id'] = _params.id;
     $.ajax(paramsAJAX);
-}
+};
 
 nextdom.security.ban = function(_params) {
     var paramsRequired = ['id'];
@@ -48,11 +44,7 @@ nextdom.security.ban = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/connection.ajax.php';
-    paramsAJAX.data = {
-        action: 'ban',
-        id: _params.id
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Connection', 'ban');
+    paramsAJAX.data['id'] = _params.id;
     $.ajax(paramsAJAX);
-}
+};

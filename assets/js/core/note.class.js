@@ -28,12 +28,8 @@ nextdom.note.remove = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/note.ajax.php';
-    paramsAJAX.data = {
-        action: "remove",
-        id: _params.id
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Note', 'remove');
+    paramsAJAX.data['id'] = _params.id;
     $.ajax(paramsAJAX);
 }
 
@@ -47,12 +43,8 @@ nextdom.note.byId = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/note.ajax.php';
-    paramsAJAX.data = {
-        action: "byId",
-        id: _params.id
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Note', 'byId');
+    paramsAJAX.data['id'] = _params.id;
     $.ajax(paramsAJAX);
 }
 
@@ -66,14 +58,10 @@ nextdom.note.save = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/note.ajax.php';
-    paramsAJAX.data = {
-        action: 'save',
-        note: json_encode(_params.note),
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Note', 'save');
+    paramsAJAX.data['note'] = json_encode(_params.note);
     $.ajax(paramsAJAX);
-}
+};
 
 nextdom.note.all = function(_params) {
     var paramsRequired = [];
@@ -85,10 +73,6 @@ nextdom.note.all = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/note.ajax.php';
-    paramsAJAX.data = {
-        action: 'all'
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Note', 'all');
     $.ajax(paramsAJAX);
-}
+};

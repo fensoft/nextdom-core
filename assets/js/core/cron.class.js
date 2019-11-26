@@ -29,14 +29,10 @@ nextdom.cron.setState = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/cron.ajax.php';
-    paramsAJAX.data = {
-        action: _params.state,
-        id: _params.id
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Cron', _params.state);
+    paramsAJAX.data['id'] = _params.id;
     $.ajax(paramsAJAX);
-}
+};
 
 
 nextdom.cron.all = function(_params) {
@@ -49,13 +45,9 @@ nextdom.cron.all = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/cron.ajax.php';
-    paramsAJAX.data = {
-        action: 'all'
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Cron', 'all');
     $.ajax(paramsAJAX);
-}
+};
 
 nextdom.cron.save = function(_params) {
     var paramsRequired = ['crons'];
@@ -67,12 +59,8 @@ nextdom.cron.save = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/cron.ajax.php';
-    paramsAJAX.data = {
-        action: 'save',
-        crons: json_encode(_params.crons),
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Cron', 'save');
+    paramsAJAX.data['crons'] = json_encode(_params.crons);
     $.ajax(paramsAJAX);
-}
+};
 

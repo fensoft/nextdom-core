@@ -30,20 +30,15 @@
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'DataStore', 'save');
     paramsAJAX.async =  _params.async || true;
-
-    paramsAJAX.url = 'core/ajax/dataStore.ajax.php';
-    paramsAJAX.data = {
-        action: 'save',
-        id: _params.id,
-        value: _params.value,
-        type: _params.type,
-        key: _params.key,
-        link_id: _params.link_id,
-    };
+    paramsAJAX.data['id'] = _params.id;
+    paramsAJAX.data['value'] = _params.value;
+    paramsAJAX.data['type'] = _params.type;
+    paramsAJAX.data['key'] = _params.key;
+    paramsAJAX.data['link_id'] = _params.link_id;
     $.ajax(paramsAJAX);
-}
+};
 
 nextdom.dataStore.all = function (_params) {
     var paramsRequired = ['type','usedBy'];
@@ -55,25 +50,22 @@ nextdom.dataStore.all = function (_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/dataStore.ajax.php';
-    paramsAJAX.data = {
-        action: 'all',
-        type: _params.type,
-        usedBy: _params.usedBy
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'DataStore', 'all');
+    paramsAJAX.data['type'] = _params.type;
+    paramsAJAX.data['usedBy'] = _params.usedBy;
     $.ajax(paramsAJAX);
-}
+};
 
 nextdom.dataStore.getSelectModal = function (_options, callback) {
+    var dataStoreModal = $("#mod_insertDataStoreValue");
     if (!isset(_options)) {
         _options = {};
     }
-    if ($("#mod_insertDataStoreValue").length != 0) {
-        $("#mod_insertDataStoreValue").remove();
+    if (dataStoreModal.length !== 0) {
+        dataStoreModal.remove();
     }
     $('body').append('<div id="mod_insertDataStoreValue" title="{{Sélectionner une variable}}" ></div>');
-    $("#mod_insertDataStoreValue").dialog({
+    dataStoreModal.dialog({
         closeText: '',
         autoOpen: false,
         modal: true,
@@ -81,10 +73,10 @@ nextdom.dataStore.getSelectModal = function (_options, callback) {
         width: 800
     });
     jQuery.ajaxSetup({async: false});
-    $('#mod_insertDataStoreValue').load('index.php?v=d&modal=dataStore.human.insert');
+    dataStoreModal.load('index.php?v=d&modal=dataStore.human.insert');
     jQuery.ajaxSetup({async: true});
     mod_insertDataStore.setOptions(_options);
-    $("#mod_insertDataStoreValue").dialog('option', 'buttons', {
+    dataStoreModal.dialog('option', 'buttons', {
         "Annuler": function () {
             $(this).dialog("close");
         },
@@ -98,7 +90,7 @@ nextdom.dataStore.getSelectModal = function (_options, callback) {
             $(this).dialog('close');
         }
     });
-    $('#mod_insertDataStoreValue').dialog('open');
+    dataStoreModal.dialog('open');
 };
 
 
@@ -112,11 +104,8 @@ nextdom.dataStore.remove = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'DataStore', 'remove');
     paramsAJAX.url = 'core/ajax/dataStore.ajax.php';
-    paramsAJAX.data = {
-        action: 'remove',
-        id: _params.id
-    };
+    paramsAJAX.data['id'] = _params.id;
     $.ajax(paramsAJAX);
 };

@@ -31,16 +31,12 @@
          return;
      }
      var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-     var paramsAJAX = nextdom.private.getParamsAJAX(params);
-     paramsAJAX.url = 'core/ajax/repo.ajax.php';
-     paramsAJAX.data = {
-         action: 'install',
-         repo: _params.repo,
-         id: _params.id,
-         version: _params.version || 'stable'
-     };
+     var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Repo', 'install');
+     paramsAJAX.data['repo'] = _params.repo;
+     paramsAJAX.data['id'] = _params.id;
+     paramsAJAX.data['version'] = _params.version || 'stable';
      $.ajax(paramsAJAX);
- }
+ };
 
  nextdom.repo.remove = function (_params) {
      var paramsRequired = ['id','repo'];
@@ -54,15 +50,11 @@
          return;
      }
      var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-     var paramsAJAX = nextdom.private.getParamsAJAX(params);
-     paramsAJAX.url = 'core/ajax/repo.ajax.php';
-     paramsAJAX.data = {
-         action: 'remove',
-         repo: _params.repo,
-         id: _params.id,
-     };
+     var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Repo', 'remove');
+     paramsAJAX.data['repo'] = _params.repo;
+     paramsAJAX.data['id'] = _params.id;
      $.ajax(paramsAJAX);
- }
+ };
 
  nextdom.repo.setRating = function (_params) {
      var paramsRequired = ['id','rating','repo'];
@@ -76,16 +68,12 @@
          return;
      }
      var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-     var paramsAJAX = nextdom.private.getParamsAJAX(params);
-     paramsAJAX.url = 'core/ajax/repo.ajax.php';
-     paramsAJAX.data = {
-         action: 'setRating',
-         repo: _params.repo,
-         id: _params.id,
-         rating: _params.rating,
-     };
+     var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Repo', 'setRating');
+     paramsAJAX.data['repo'] = _params.repo;
+     paramsAJAX.data['id'] = _params.id;
+     paramsAJAX.data['rating'] = _params.rating;
      $.ajax(paramsAJAX);
- }
+ };
 
  nextdom.repo.test = function (_params) {
      var paramsRequired = ['repo'];
@@ -99,14 +87,10 @@
          return;
      }
      var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-     var paramsAJAX = nextdom.private.getParamsAJAX(params);
-     paramsAJAX.url = 'core/ajax/repo.ajax.php';
-     paramsAJAX.data = {
-         action: 'test',
-         repo: _params.repo,
-     };
+     var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Repo', 'test');
+     paramsAJAX.data['repo'] = _params.repo;
      $.ajax(paramsAJAX);
- }
+ };
 
 
  nextdom.repo.backupList = function (_params) {
@@ -121,11 +105,7 @@
          return;
      }
      var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-     var paramsAJAX = nextdom.private.getParamsAJAX(params);
-     paramsAJAX.url = 'core/ajax/repo.ajax.php';
-     paramsAJAX.data = {
-         action: 'backupList',
-         repo: _params.repo,
-     };
+     var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Repo', 'backupList');
+     paramsAJAX.data['repo'] = _params.repo;
      $.ajax(paramsAJAX);
- }
+ };

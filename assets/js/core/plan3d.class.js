@@ -31,15 +31,11 @@
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/plan3d.ajax.php';
-    paramsAJAX.data = {
-        action: 'remove',
-        id: _params.id || '',
-        link_type: _params.link_type || '',
-        link_id: _params.link_id || '',
-        plan3dHeader_id: _params.plan3dHeader_id || ''
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Plan3d', 'remove');
+    paramsAJAX.data['id'] = _params.id || '';
+    paramsAJAX.data['link_type'] = _params.link_type || '';
+    paramsAJAX.data['link_id'] = _params.link_id || '';
+    paramsAJAX.data['plan3dHeader_id'] = _params.plan3dHeader_id || '';
     $.ajax(paramsAJAX);
 };
 
@@ -56,12 +52,8 @@ nextdom.plan3d.save = function (_params) {
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
 
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/plan3d.ajax.php';
-    paramsAJAX.data = {
-        action: 'save',
-        plan3ds: json_encode(_params.plan3ds),
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Plan3d', 'save');
+    paramsAJAX.data['plan3ds'] = json_encode(_params.plan3ds);
     $.ajax(paramsAJAX);
 };
 
@@ -75,12 +67,8 @@ nextdom.plan3d.byId = function (_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/plan3d.ajax.php';
-    paramsAJAX.data = {
-        action: 'get',
-        id: _params.id
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Plan3d', 'get');
+    paramsAJAX.data['id'] = _params.id;
     $.ajax(paramsAJAX);
 };
 
@@ -94,13 +82,9 @@ nextdom.plan3d.byName = function (_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/plan3d.ajax.php';
-    paramsAJAX.data = {
-        action: 'byName',
-        name: _params.name,
-        plan3dHeader_id: _params.plan3dHeader_id
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Plan3d', 'byName');
+    paramsAJAX.data['name'] = _params.name;
+    paramsAJAX.data['plan3dHeader_id'] = _params.plan3dHeader_id;
     $.ajax(paramsAJAX);
 };
 
@@ -115,12 +99,8 @@ nextdom.plan3d.byplan3dHeader = function (_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/plan3d.ajax.php';
-    paramsAJAX.data = {
-        action: 'plan3dHeader',
-        plan3dHeader_id: _params.plan3dHeader_id
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Plan3d', 'plan3dHeader');
+    paramsAJAX.data['plan3dHeader_id'] = _params.plan3dHeader_id;
     $.ajax(paramsAJAX);
 };
 
@@ -134,12 +114,8 @@ nextdom.plan3d.saveHeader = function (_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/plan3d.ajax.php';
-    paramsAJAX.data = {
-        action: 'saveplan3dHeader',
-        plan3dHeader: json_encode(_params.plan3dHeader)
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Plan3d', 'saveplan3dHeader');
+    paramsAJAX.data['plan3dHeader'] = json_encode(_params.plan3dHeader);
     $.ajax(paramsAJAX);
 };
 
@@ -153,12 +129,8 @@ nextdom.plan3d.removeHeader = function (_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/plan3d.ajax.php';
-    paramsAJAX.data = {
-        action: 'removeplan3dHeader',
-        id: _params.id
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Plan3d', 'removeplan3dHeader');
+    paramsAJAX.data['id'] = _params.id;
     $.ajax(paramsAJAX);
 };
 
@@ -172,13 +144,9 @@ nextdom.plan3d.getHeader = function (_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/plan3d.ajax.php';
-    paramsAJAX.data = {
-        action: 'getplan3dHeader',
-        id: _params.id,
-        code: _params.code
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Plan3d', 'getplan3dHeader');
+    paramsAJAX.data['id'] = _params.id;
+    paramsAJAX.data['code'] = _params.code;
     $.ajax(paramsAJAX);
 };
 
@@ -201,10 +169,6 @@ nextdom.plan3d.allHeader = function (_params) {
         params.success(nextdom.plan3d.cache.all);
         return;
     }
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/plan3d.ajax.php';
-    paramsAJAX.data = {
-        action: 'allHeader',
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Plan3d', 'allHeader');
     $.ajax(paramsAJAX);
-}
+};

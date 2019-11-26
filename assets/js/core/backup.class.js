@@ -29,11 +29,7 @@
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/nextdom.ajax.php';
-    paramsAJAX.data = {
-        action: 'backup',
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'NextDom', 'backup');
     $.ajax(paramsAJAX);
 };
 
@@ -48,12 +44,8 @@ nextdom.backup.restoreLocal = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/nextdom.ajax.php';
-    paramsAJAX.data = {
-        action: 'restore',
-        backup : _params.backup
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'NextDom', 'restore');
+    paramsAJAX.data['backup'] = _params.backup;
     $.ajax(paramsAJAX);
 };
 
@@ -67,12 +59,8 @@ nextdom.backup.remove = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/nextdom.ajax.php';
-    paramsAJAX.data = {
-        action: 'removeBackup',
-        backup: _params.backup,
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'NextDom', 'removeBackup');
+    paramsAJAX.data['backup'] = _params.backup;
     $.ajax(paramsAJAX);
 };
 
@@ -86,12 +74,9 @@ nextdom.backup.uploadCloud = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/repo.ajax.php';
-    paramsAJAX.data = {
-        action: 'uploadCloud',
-        backup: _params.backup
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Repo', 'uploadCloud');
+    paramsAJAX.data['backup'] = _params.backup;
+    paramsAJAX.data['repo'] = _params.repo;
     $.ajax(paramsAJAX);
 };
 
@@ -105,13 +90,9 @@ nextdom.backup.restoreCloud = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/repo.ajax.php';
-    paramsAJAX.data = {
-        action: 'restoreCloud',
-        backup: _params.backup,
-        repo: _params.repo,
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Repo', 'restoreCloud');
+    paramsAJAX.data['backup'] = _params.backup;
+    paramsAJAX.data['repo'] = _params.repo;
     $.ajax(paramsAJAX);
 };
 
@@ -125,10 +106,6 @@ nextdom.backup.list = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/nextdom.ajax.php';
-    paramsAJAX.data = {
-        action: 'listBackup',
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'NextDom', 'listBackup');
     $.ajax(paramsAJAX);
 };

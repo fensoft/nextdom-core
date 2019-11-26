@@ -29,13 +29,9 @@ nextdom.config.save = function (_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/config.ajax.php';
-    paramsAJAX.data = {
-        action: 'addKey',
-        value: json_encode(_params.configuration),
-        plugin: _params.plugin || 'core'
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Config', 'addKey');
+    paramsAJAX.data['value'] = json_encode(_params.configuration);
+    paramsAJAX.data['plugin'] = _params.plugin || 'core';
     $.ajax(paramsAJAX);
 }
 
@@ -49,14 +45,10 @@ nextdom.config.load = function (_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/config.ajax.php';
-    paramsAJAX.data = {
-        action: 'getKey',
-        key: ($.isArray(_params.configuration) || $.isPlainObject(_params.configuration)) ? json_encode(_params.configuration) : _params.configuration,
-        plugin: _params.plugin || 'core',
-        convertToHumanReadable :  _params.convertToHumanReadable || false
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Config', 'getKey');
+    paramsAJAX.data['key'] = ($.isArray(_params.configuration) || $.isPlainObject(_params.configuration)) ? json_encode(_params.configuration) : _params.configuration;
+    paramsAJAX.data['plugin'] = _params.plugin || 'core';
+    paramsAJAX.data['convertToHumanReadable'] =  _params.convertToHumanReadable || false;
     $.ajax(paramsAJAX);
 };
 
@@ -70,12 +62,9 @@ nextdom.config.remove = function (_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/config.ajax.php';
-    paramsAJAX.data = {
-        action: 'removeKey',
-        key: ($.isArray(_params.configuration) || $.isPlainObject(_params.configuration)) ? json_encode(_params.configuration) : _params.configuration,
-        plugin: _params.plugin || 'core'
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Config', 'removeKey');
+    paramsAJAX.data['action'] = 'removeKey';
+    paramsAJAX.data['key'] = ($.isArray(_params.configuration) || $.isPlainObject(_params.configuration)) ? json_encode(_params.configuration) : _params.configuration;
+    paramsAJAX.data['plugin'] = _params.plugin || 'core';
     $.ajax(paramsAJAX);
 };

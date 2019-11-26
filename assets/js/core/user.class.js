@@ -30,13 +30,9 @@
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/user.ajax.php';
-    paramsAJAX.data = {
-        action: 'all',
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'User', 'all');
     $.ajax(paramsAJAX);
-}
+};
 
 nextdom.user.remove = function(_params) {
     var paramsRequired = ['id'];
@@ -48,14 +44,10 @@ nextdom.user.remove = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/user.ajax.php';
-    paramsAJAX.data = {
-        action: 'remove',
-        id: _params.id
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'User', 'remove');
+    paramsAJAX.data['id'] = _params.id;
     $.ajax(paramsAJAX);
-}
+};
 
 nextdom.user.save = function(_params) {
     var paramsRequired = ['users'];
@@ -67,14 +59,10 @@ nextdom.user.save = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/user.ajax.php';
-    paramsAJAX.data = {
-        action: 'save',
-        users: json_encode(_params.users)
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'User', 'save');
+    paramsAJAX.data['users'] = json_encode(_params.users);
     $.ajax(paramsAJAX);
-}
+};
 
 nextdom.user.saveProfils = function(_params) {
     var paramsRequired = ['profils'];
@@ -86,14 +74,10 @@ nextdom.user.saveProfils = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/user.ajax.php';
-    paramsAJAX.data = {
-        action: 'saveProfils',
-        profils: json_encode(_params.profils)
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'User', 'saveProfils');
+    paramsAJAX.data['profils'] = json_encode(_params.profils);
     $.ajax(paramsAJAX);
-}
+};
 
 nextdom.user.get = function(_params) {
     var paramsRequired = [];
@@ -105,12 +89,8 @@ nextdom.user.get = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/user.ajax.php';
-    paramsAJAX.data = {
-        action: 'get',
-        profils: json_encode(_params.profils)
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'User', 'get');
+    paramsAJAX.data['profils'] = json_encode(_params.profils);
     $.ajax(paramsAJAX);
 };
 
@@ -134,12 +114,8 @@ nextdom.user.isConnect = function(_params) {
             return;
         }
         var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-        var paramsAJAX = nextdom.private.getParamsAJAX(params);
-        paramsAJAX.url = 'core/ajax/user.ajax.php';
+        var paramsAJAX = nextdom.private.getParamsAJAX(params, 'User', 'isConnect');
         paramsAJAX.global = false;
-        paramsAJAX.data = {
-            action: 'isConnect',
-        };
         $.ajax(paramsAJAX);
     } else {
         if ('function' == typeof (_params.success)) {
@@ -158,13 +134,10 @@ nextdom.user.validateTwoFactorCode = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/user.ajax.php';
-    paramsAJAX.data = {
-        action: 'validateTwoFactorCode',
-        code: _params.code,
-        enableTwoFactorAuthentification : _params.enableTwoFactorAuthentification || 0
-    };
+
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'User', 'validateTwoFactorCode');
+    paramsAJAX.data['code'] = _params.code;
+    paramsAJAX.data['enableTwoFactorAuthentification'] = _params.enableTwoFactorAuthentification || 0;
     $.ajax(paramsAJAX);
 };
 
@@ -178,12 +151,8 @@ nextdom.user.removeTwoFactorCode = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/user.ajax.php';
-    paramsAJAX.data = {
-        action: 'removeTwoFactorCode',
-        id: _params.id,
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'User', 'removeTwoFactorCode');
+    paramsAJAX.data['id'] = _params.id;
     $.ajax(paramsAJAX);
 };
 
@@ -191,7 +160,7 @@ nextdom.user.useTwoFactorAuthentification = function(_params) {
     var paramsRequired = ['login'];
     var paramsSpecifics = {
         global: false,
-    }
+    };
     try {
         nextdom.private.checkParamsRequired(_params || {}, paramsRequired);
     } catch (e) {
@@ -199,12 +168,8 @@ nextdom.user.useTwoFactorAuthentification = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/user.ajax.php';
-    paramsAJAX.data = {
-        action: 'useTwoFactorAuthentification',
-        login: _params.login
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'User', 'useTwoFactorAuthentification');
+    paramsAJAX.data['login'] = _params.login;
     $.ajax(paramsAJAX);
 };
 
@@ -218,15 +183,11 @@ nextdom.user.login = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/user.ajax.php';
-    paramsAJAX.data = {
-        action: 'login',
-        username: _params.username,
-        password: _params.password,
-        twoFactorCode: _params.twoFactorCode || '',
-        storeConnection: _params.storeConnection || 0,
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'User', 'login');
+    paramsAJAX.data['username'] = _params.username;
+    paramsAJAX.data['password'] = _params.password;
+    paramsAJAX.data['twoFactorCode'] = _params.twoFactorCode || '';
+    paramsAJAX.data['storeConnection'] = _params.storeConnection || 0;
     $.ajax(paramsAJAX);
 };
 
@@ -241,11 +202,7 @@ nextdom.user.refresh = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/user.ajax.php';
-    paramsAJAX.data = {
-        action: 'refresh',
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'User', 'refresh');
     $.ajax(paramsAJAX);
 };
 
@@ -260,11 +217,7 @@ nextdom.user.removeBanIp = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/user.ajax.php';
-    paramsAJAX.data = {
-        action: 'removeBanIp',
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'User', 'removeBanIp');
     $.ajax(paramsAJAX);
 };
 
@@ -278,13 +231,9 @@ nextdom.user.removeRegisterDevice = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/user.ajax.php';
-    paramsAJAX.data = {
-        action: 'removeRegisterDevice',
-        key: _params.key,
-        user_id : _params.user_id || ''
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'User', 'removeRegisterDevice');
+    paramsAJAX.data['key'] = _params.key;
+    paramsAJAX.data['user_id'] = _params.user_id || '';
     $.ajax(paramsAJAX);
 };
 
@@ -298,12 +247,8 @@ nextdom.user.deleteSession = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/user.ajax.php';
-    paramsAJAX.data = {
-        action: 'deleteSession',
-        id: _params.id
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'User', 'deleteSession');
+    paramsAJAX.data['id'] = _params.id;
     $.ajax(paramsAJAX);
 };
 
@@ -317,11 +262,7 @@ nextdom.user.supportAccess = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/user.ajax.php';
-    paramsAJAX.data = {
-        action: 'supportAccess',
-        enable: _params.enable
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'User', 'supportAccess');
+    paramsAJAX.data['enable'] = _params.enable;
     $.ajax(paramsAJAX);
 };

@@ -29,11 +29,7 @@
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/network.ajax.php';
-    paramsAJAX.data = {
-        action: 'restartDns',
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Network', 'restartDns');
     $.ajax(paramsAJAX);
 };
 
@@ -47,10 +43,6 @@ nextdom.network.stopDns = function (_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/network.ajax.php';
-    paramsAJAX.data = {
-        action: 'stopDns',
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Network', 'stopDns');
     $.ajax(paramsAJAX);
 };

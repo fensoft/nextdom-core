@@ -75,7 +75,7 @@ nextdom.private.handleAjaxErrorAPI = function(_request, _status, _error) {
 /**
  * Retourne les paramètres AJAX de l'API en fonction des paramètres choisis par l'utilisateur
  */
-nextdom.private.getParamsAJAX = function(_params) {
+nextdom.private.getParamsAJAX = function(_params, target, action) {
     // cas particulier du type dans les paramètres
     var typeInData = false;
 
@@ -121,6 +121,14 @@ nextdom.private.getParamsAJAX = function(_params) {
         complete: _params.complete,
         data: {}
     };
+
+    if (target !== undefined) {
+        paramsAJAX.url = 'src/ajax.php';
+        paramsAJAX.data = {
+            target: target,
+            action: action
+        };
+    }
 
     if (typeInData) {
         paramsAJAX.data.type = _params._type;

@@ -31,14 +31,10 @@ nextdom.message.all = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/message.ajax.php';
-    paramsAJAX.data = {
-        action: "all",
-        plugin: _params.plugin || ''
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Message', 'all');
+    paramsAJAX.data['plugin'] = _params.plugin || '';
     $.ajax(paramsAJAX);
-}
+};
 
 nextdom.message.remove = function(_params) {
     var paramsRequired = ['id'];
@@ -50,14 +46,10 @@ nextdom.message.remove = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/message.ajax.php';
-    paramsAJAX.data = {
-        action: 'removeMessage',
-        id: _params.id,
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Message', 'removeMessage');
+    paramsAJAX.data['id'] = _params.id;
     $.ajax(paramsAJAX);
-}
+};
 
 nextdom.message.clear = function(_params) {
     var paramsRequired = [];
@@ -69,14 +61,10 @@ nextdom.message.clear = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/message.ajax.php';
-    paramsAJAX.data = {
-        action: 'clearMessage',
-        plugin: _params.plugin || ''
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Message', 'clearMessage');
+    paramsAJAX.data['plugin'] = _params.plugin || '';
     $.ajax(paramsAJAX);
-}
+};
 
 nextdom.message.number = function(_params) {
     var paramsRequired = [];
@@ -90,10 +78,6 @@ nextdom.message.number = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/message.ajax.php';
-    paramsAJAX.data = {
-        action: 'nbMessage',
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Message', 'nbMessage');
     $.ajax(paramsAJAX);
-}
+};

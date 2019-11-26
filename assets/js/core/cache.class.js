@@ -30,13 +30,9 @@
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/cache.ajax.php';
-    paramsAJAX.data = {
-        action: 'clean'
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Cache', 'cleanr');
     $.ajax(paramsAJAX);
-}
+};
 
 nextdom.cache.flush = function (_params) {
     var paramsRequired = [];
@@ -48,13 +44,9 @@ nextdom.cache.flush = function (_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/cache.ajax.php';
-    paramsAJAX.data = {
-        action: 'flush'
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Cache', 'flush');
     $.ajax(paramsAJAX);
-}
+};
 
 nextdom.cache.stats = function (_params) {
     var paramsRequired = [];
@@ -66,10 +58,6 @@ nextdom.cache.stats = function (_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/cache.ajax.php';
-    paramsAJAX.data = {
-        action: 'stats'
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Cache', 'stats');
     $.ajax(paramsAJAX);
-}
+};

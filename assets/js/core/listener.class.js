@@ -30,11 +30,7 @@ nextdom.listener.all = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/listener.ajax.php';
-    paramsAJAX.data = {
-        action: 'all'
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Listener', 'all');
     $.ajax(paramsAJAX);
 }
 
@@ -48,12 +44,8 @@ nextdom.listener.save = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/listener.ajax.php';
-    paramsAJAX.data = {
-        action: 'save',
-        listeners: json_encode(_params.listeners),
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Listener', 'save');
+    paramsAJAX.data['listeners'] = json_encode(_params.listeners);
     $.ajax(paramsAJAX);
 }
 

@@ -40,14 +40,9 @@ nextdom.plugin.all = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/plugin.ajax.php';
-    paramsAJAX.data = {
-        action: 'all',
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Plugin', 'all');
     $.ajax(paramsAJAX);
-}
-
+};
 
 nextdom.plugin.toggle = function(_params) {
     var paramsRequired = ['id', 'state'];
@@ -59,13 +54,9 @@ nextdom.plugin.toggle = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/plugin.ajax.php';
-    paramsAJAX.data = {
-        action: 'toggle',
-        id: _params.id,
-        state: _params.state
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Plugin', 'toggle');
+    paramsAJAX.data['id'] = _params.id;
+    paramsAJAX.data['state'] = _params.state;
     $.ajax(paramsAJAX);
 };
 
@@ -79,12 +70,8 @@ nextdom.plugin.get = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/plugin.ajax.php';
-    paramsAJAX.data = {
-        action: 'getConf',
-        id: _params.id
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Plugin', 'getConf');
+    paramsAJAX.data['id'] = _params.id;
     $.ajax(paramsAJAX);
 };
 
@@ -100,12 +87,8 @@ nextdom.plugin.getDependancyInfo = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/plugin.ajax.php';
-    paramsAJAX.data = {
-        action: 'getDependancyInfo',
-        id: _params.id
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Plugin', 'getDependancyInfo');
+    paramsAJAX.data['id'] = _params.id;
     $.ajax(paramsAJAX);
 };
 
@@ -119,12 +102,8 @@ nextdom.plugin.dependancyInstall = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/plugin.ajax.php';
-    paramsAJAX.data = {
-        action: 'dependancyInstall',
-        id: _params.id
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Plugin', 'dependancyInstall');
+    paramsAJAX.data['id'] = _params.id;
     $.ajax(paramsAJAX);
 };
 
@@ -140,12 +119,8 @@ nextdom.plugin.getDeamonInfo = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/plugin.ajax.php';
-    paramsAJAX.data = {
-        action: 'getDeamonInfo',
-        id: _params.id
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Plugin', 'getDeamonInfo');
+    paramsAJAX.data['id'] = _params.id;
     $.ajax(paramsAJAX);
 };
 
@@ -159,14 +134,10 @@ nextdom.plugin.deamonStart = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/plugin.ajax.php';
-    paramsAJAX.data = {
-        action: 'deamonStart',
-        id: _params.id,
-        debug: _params.debug || 0,
-        forceRestart: _params.forceRestart || 0
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Plugin', 'deamonStart');
+    paramsAJAX.data['id'] = _params.id;
+    paramsAJAX.data['debug'] = _params.debug || 0;
+    paramsAJAX.data['forceRestart'] = _params.forceRestart || 0;
     $.ajax(paramsAJAX);
 };
 
@@ -180,12 +151,8 @@ nextdom.plugin.deamonStop = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/plugin.ajax.php';
-    paramsAJAX.data = {
-        action: 'deamonStop',
-        id: _params.id
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Plugin', 'deamonStop');
+    paramsAJAX.data['id'] = _params.id;
     $.ajax(paramsAJAX);
 };
 
@@ -199,12 +166,8 @@ nextdom.plugin.deamonChangeAutoMode = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/plugin.ajax.php';
-    paramsAJAX.data = {
-        action: 'deamonChangeAutoMode',
-        id: _params.id,
-        mode: _params.mode
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Plugin', 'deamonChangeAutoMode');
+    paramsAJAX.data['id'] = _params.id;
+    paramsAJAX.data['mode'] = _params.mode;
     $.ajax(paramsAJAX);
 };

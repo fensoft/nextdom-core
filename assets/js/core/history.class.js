@@ -38,14 +38,10 @@ nextdom.history.get = function (_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/cmd.ajax.php';
-    paramsAJAX.data = {
-        action: 'getHistory',
-        id: _params.cmd_id,
-        dateStart: _params.dateStart || '',
-        dateEnd: _params.dateEnd || ''
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Cmd', 'getHistory');
+    paramsAJAX.data['id'] = _params.cmd_id;
+    paramsAJAX.data['dateStart'] = _params.dateStart || '';
+    paramsAJAX.data['dateEnd'] = _params.dateEnd || '';
     $.ajax(paramsAJAX);
 }
 
@@ -59,13 +55,9 @@ nextdom.history.copyHistoryToCmd = function (_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/cmd.ajax.php';
-    paramsAJAX.data = {
-        action: 'copyHistoryToCmd',
-        source_id: _params.source_id,
-        target_id: _params.target_id
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Cmd', 'copyHistoryToCmd');
+    paramsAJAX.data['source_id'] = _params.source_id;
+    paramsAJAX.data['target_id'] = _params.target_id;
     $.ajax(paramsAJAX);
 }
 
@@ -509,14 +501,10 @@ nextdom.history.changePoint = function (_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/cmd.ajax.php';
-    paramsAJAX.data = {
-        action: 'changeHistoryPoint',
-        cmd_id: _params.cmd_id,
-        datetime: _params.datetime,
-        value: _params.value,
-        oldValue : _params.oldValue
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Cmd', 'changeHistoryPoint');
+    paramsAJAX.data['cmd_id'] = _params.cmd_id;
+    paramsAJAX.data['datetime'] = _params.datetime;
+    paramsAJAX.data['value'] = _params.value;
+    paramsAJAX.data['oldValue'] = _params.oldValue;
     $.ajax(paramsAJAX);
 };

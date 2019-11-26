@@ -30,14 +30,10 @@
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/update.ajax.php';
-    paramsAJAX.data = {
-        action: 'updateAll',
-        options: json_encode(_params.options) || '',
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Update', 'updateAll');
+    paramsAJAX.data['options'] = json_encode(_params.options) || '';
     $.ajax(paramsAJAX);
-}
+};
 
 nextdom.update.do = function (_params) {
     var paramsRequired = ['id'];
@@ -49,14 +45,10 @@ nextdom.update.do = function (_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/update.ajax.php';
-    paramsAJAX.data = {
-        action: 'update',
-        id: _params.id
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Update', 'update');
+    paramsAJAX.data['id'] = _params.id;
     $.ajax(paramsAJAX);
-}
+};
 
 nextdom.update.remove = function (_params) {
     var paramsRequired = ['id'];
@@ -68,14 +60,10 @@ nextdom.update.remove = function (_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/update.ajax.php';
-    paramsAJAX.data = {
-        action: 'remove',
-        id: _params.id
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Update', 'remove');
+    paramsAJAX.data['id'] = _params.id;
     $.ajax(paramsAJAX);
-}
+};
 
 nextdom.update.checkAll = function (_params) {
     var paramsRequired = [];
@@ -87,13 +75,9 @@ nextdom.update.checkAll = function (_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/update.ajax.php';
-    paramsAJAX.data = {
-        action: 'checkAllUpdate'
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Update', 'checkAllUpdate');
     $.ajax(paramsAJAX);
-}
+};
 
 nextdom.update.check = function (_params) {
     var paramsRequired = ['id'];
@@ -105,14 +89,10 @@ nextdom.update.check = function (_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/update.ajax.php';
-    paramsAJAX.data = {
-        action: 'checkUpdate',
-        id: _params.id
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Update', 'checkUpdate');
+    paramsAJAX.data['id'] = _params.id;
     $.ajax(paramsAJAX);
-}
+};
 
 
 nextdom.update.get = function (_params) {
@@ -125,13 +105,10 @@ nextdom.update.get = function (_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/update.ajax.php';
-    paramsAJAX.data = {
-        action: 'all'
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Update', 'all');
+    paramsAJAX.data['action'] = 'all';
     $.ajax(paramsAJAX);
-}
+};
 
 nextdom.update.save = function (_params) {
     var paramsRequired = ['update'];
@@ -143,14 +120,10 @@ nextdom.update.save = function (_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/update.ajax.php';
-    paramsAJAX.data = {
-        action: 'save',
-        update: json_encode(_params.update)
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Update', 'save');
+    paramsAJAX.data['update'] = json_encode(_params.update);
     $.ajax(paramsAJAX);
-}
+};
 
 nextdom.update.saves = function (_params) {
     var paramsRequired = ['updates'];
@@ -162,14 +135,10 @@ nextdom.update.saves = function (_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/update.ajax.php';
-    paramsAJAX.data = {
-        action: 'saves',
-        updates: json_encode(_params.updates)
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Update', 'saves');
+    paramsAJAX.data['updates'] = json_encode(_params.updates);
     $.ajax(paramsAJAX);
-}
+};
 
 nextdom.update.number = function(_params) {
     var paramsRequired = [];
@@ -183,10 +152,6 @@ nextdom.update.number = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/update.ajax.php';
-    paramsAJAX.data = {
-        action: 'nbUpdate',
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'Update', 'nbUpdate');
     $.ajax(paramsAJAX);
-}
+};

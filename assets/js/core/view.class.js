@@ -40,13 +40,10 @@
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/view.ajax.php';
-    paramsAJAX.data = {
-        action: 'all',
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'View', 'all');
+    paramsAJAX.data['action'] = 'all';
     $.ajax(paramsAJAX);
-}
+};
 
 nextdom.view.toHtml = function (_params) {
     if (_params.version == 'mobile') {
@@ -71,16 +68,12 @@ nextdom.view.toHtml = function (_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/view.ajax.php';
-    paramsAJAX.data = {
-        action: "get",
-        id: ($.isArray(_params.id)) ? json_encode(_params.id) : _params.id,
-        version: _params.version,
-        html : true,
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'View', 'get');
+    paramsAJAX.data['id'] = ($.isArray(_params.id)) ? json_encode(_params.id) : _params.id;
+    paramsAJAX.data['version'] = _params.version;
+    paramsAJAX.data['html'] = true;
     $.ajax(paramsAJAX);
-}
+};
 
 nextdom.view.handleViewAjax = function (_params) {
     var result = {html: '', scenario: [], cmd: [], eqLogic: []};
@@ -116,7 +109,7 @@ nextdom.view.handleViewAjax = function (_params) {
        result.html += '</div>';
    }
    return result;
-}
+};
 
 
 nextdom.view.remove = function (_params) {
@@ -129,14 +122,10 @@ nextdom.view.remove = function (_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/view.ajax.php';
-    paramsAJAX.data = {
-        action: 'remove',
-        id: _params.id,
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'View', 'remove');
+    paramsAJAX.data['id'] = _params.id;
     $.ajax(paramsAJAX);
-}
+};
 
 
 nextdom.view.save = function (_params) {
@@ -149,15 +138,11 @@ nextdom.view.save = function (_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/view.ajax.php';
-    paramsAJAX.data = {
-        action: 'save',
-        view_id: _params.id,
-        view: json_encode(_params.view),
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'View', 'save');
+    paramsAJAX.data['view_id'] = _params.id;
+    paramsAJAX.data['view'] = json_encode(_params.view);
     $.ajax(paramsAJAX);
-}
+};
 
 nextdom.view.get = function (_params) {
     var paramsRequired = ['id'];
@@ -169,14 +154,10 @@ nextdom.view.get = function (_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/view.ajax.php';
-    paramsAJAX.data = {
-        action: 'get',
-        id: _params.id,
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'View', 'get');
+    paramsAJAX.data['id'] = _params.id;
     $.ajax(paramsAJAX);
-}
+};
 
 nextdom.view.setEqLogicOrder = function (_params) {
     var paramsRequired = ['eqLogics'];
@@ -188,14 +169,10 @@ nextdom.view.setEqLogicOrder = function (_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/view.ajax.php';
-    paramsAJAX.data = {
-        action: 'setEqLogicOrder',
-        eqLogics: json_encode(_params.eqLogics),
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'View', 'setEqLogicOrder');
+    paramsAJAX.data['eqLogics'] = json_encode(_params.eqLogics);
     $.ajax(paramsAJAX);
-}
+};
 
 nextdom.view.setOrder = function(_params) {
     var paramsRequired = ['views'];
@@ -207,12 +184,8 @@ nextdom.view.setOrder = function(_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/view.ajax.php';
-    paramsAJAX.data = {
-        action: 'setOrder',
-        views: json_encode(_params.views)
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'View', 'setOrder');
+    paramsAJAX.data['views'] = json_encode(_params.views);
     $.ajax(paramsAJAX);
 };
 
@@ -227,11 +200,7 @@ nextdom.view.removeImage = function (_params) {
         return;
     }
     var params = $.extend({}, nextdom.private.default_params, paramsSpecifics, _params || {});
-    var paramsAJAX = nextdom.private.getParamsAJAX(params);
-    paramsAJAX.url = 'core/ajax/view.ajax.php';
-    paramsAJAX.data = {
-        action: 'removeImage',
-        id: _params.id
-    };
+    var paramsAJAX = nextdom.private.getParamsAJAX(params, 'View', 'removeImage');
+    paramsAJAX.data['id'] = _params.id;
     $.ajax(paramsAJAX);
 };
