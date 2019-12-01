@@ -121,4 +121,11 @@ class Config
         return $this;
     }
 
+    /**
+     * @return string
+     */
+    public function getTableName()
+    {
+        return 'config';
+    }
 }

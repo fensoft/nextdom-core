@@ -30,8 +30,10 @@ class AjaxParams extends Enum
     const CATEGORY = 'category';
     const CODE = 'code';
     const COMMAND = 'command';
+    const CONVERT_TO_HUMAN_READABLE = 'convertToHumanReadable';
     const DEFAULT = 'default';
     const ENABLE = 'enable';
+    const EQTYPE_NAME = 'eqType_name';
     const EXPRESSION = 'expression';
     const FORCE_RESTART = 'forceRestart';
     const HTML = 'html';
@@ -44,8 +46,12 @@ class AjaxParams extends Enum
     const MODAL = 'modal';
     const MODE = 'mode';
     const OBJECT = 'object';
+    const OBJECTS = 'objects';
     const OBJECT_ID = 'object_id';
+    const ONLY_ENABLE = 'onlyEnable';
+    const ONLY_VISIBLE = 'onlyVisible';
     const OPTION = 'option';
+    const ORDER_BY_NAME = 'orderByName';
     const NAME = 'name';
     const PARAMS = 'params';
     const PLUGIN = 'plugin';
@@ -55,13 +61,18 @@ class AjaxParams extends Enum
     const SCENARIOS = 'scenarios';
     const START = 'start';
     const STATE = 'state';
+    const SUB_TYPE_CMD = 'subTypeCmd';
     const SUMMARY = 'summary';
     const TAG = 'tag';
+    const TARGET = 'target';
     const TEMPLATE = 'template';
     const TEST = 'test';
     const TYPE = 'type';
+    const TYPE_CMD = 'typeCmd';
+    const UPDATE = 'update';
     const USED_BY = 'usedBy';
     const USER_ID = 'user_id';
+    const VALUE = 'value';
     const VERSION = 'version';
     const VIEW_ID = 'view_id';
 }

@@ -156,7 +156,7 @@ class UpdateAjax extends BaseAjax
         $isNewUpdate = false;
         $backupUpdate = null;
 
-        $updateDataJson = json_decode(Utils::init('update'), true);
+        $updateDataJson = json_decode(Utils::init(AjaxParams::UPDATE), true);
         if (isset($updateDataJson['id'])) {
             $targetUpdate = UpdateManager::byId($updateDataJson['id']);
         } elseif (isset($updateDataJson['logicalId'])) {
@@ -187,7 +187,7 @@ class UpdateAjax extends BaseAjax
     public function saves()
     {
         AuthentificationHelper::isConnectedAsAdminOrFail();
-        Utils::processJsonObject('update', Utils::init('updates'));
+        Utils::processJsonObject(UpdateManager::DB_CLASS_NAME, Utils::init('updates'));
         $this->ajax->success();
     }
 

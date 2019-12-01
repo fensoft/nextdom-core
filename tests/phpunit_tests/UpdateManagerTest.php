@@ -29,14 +29,14 @@ class UpdateManagerTest extends PHPUnit_Framework_TestCase
     public static function tearDownAfterClass()
     {
         // Keep only core
-        DBHelper::exec('DELETE FROM `update` WHERE id > 1');
+        DBHelper::exec('DELETE FROM `update` WHERE id > 2');
     }
 
     public function setUp()
     {
 
     }
-/*
+
     public function testFindNewUpdateObject()
     {
         UpdateManager::findNewUpdateObject();
@@ -75,7 +75,6 @@ class UpdateManagerTest extends PHPUnit_Framework_TestCase
 
     public function testByTypeCore()
     {
-        UpdateManager::findNewUpdateObject();
         $updatesByType = UpdateManager::byType('core');
         $this->assertCount(1, $updatesByType);
         $this->assertEquals('nextdom', $updatesByType[0]->getName());
@@ -83,7 +82,6 @@ class UpdateManagerTest extends PHPUnit_Framework_TestCase
 
     public function testByTypePlugin()
     {
-        UpdateManager::findNewUpdateObject();
         $updatesByType = UpdateManager::byType('plugin');
         $this->assertCount(1, $updatesByType);
         $this->assertEquals('plugin4tests', $updatesByType[0]->getName());
@@ -91,14 +89,12 @@ class UpdateManagerTest extends PHPUnit_Framework_TestCase
 
     public function testAll()
     {
-        UpdateManager::findNewUpdateObject();
         $allUpdates = UpdateManager::all();
         $this->assertCount(2, $allUpdates);
     }
 
     public function testAllWithFilterCore()
     {
-        UpdateManager::findNewUpdateObject();
         $updatesByType = UpdateManager::all('core');
         $this->assertCount(1, $updatesByType);
         $this->assertEquals('nextdom', $updatesByType[0]->getName());
@@ -106,12 +102,11 @@ class UpdateManagerTest extends PHPUnit_Framework_TestCase
 
     public function testAllWithFilterPlugin()
     {
-        UpdateManager::findNewUpdateObject();
         $updatesByType = UpdateManager::all('plugin');
         $this->assertCount(1, $updatesByType);
         $this->assertEquals('plugin4tests', $updatesByType[0]->getName());
     }
-*/
+
     public function testListRepo()
     {
         $repoList = UpdateManager::listRepo();

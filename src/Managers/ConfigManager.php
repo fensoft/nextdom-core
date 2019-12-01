@@ -38,6 +38,7 @@ use NextDom\Helpers\DBHelper;
 use NextDom\Helpers\NetworkHelper;
 use NextDom\Helpers\NextDomHelper;
 use NextDom\Helpers\Utils;
+use NextDom\Model\Entity\Config;
 
 /**
  * Class ConfigManager

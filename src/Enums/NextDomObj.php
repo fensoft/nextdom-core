@@ -24,7 +24,6 @@ namespace NextDom\Enums;
 class NextDomObj extends Enum
 {
     const CMD = 'cmd';
-    const SCENARIO = 'scenario';
     const EQLOGIC = 'eqLogic';
     const DATASTORE = 'dataStore';
     const INTERACT = 'interact';
@@ -35,5 +34,7 @@ class NextDomObj extends Enum
     const PLAN = 'plan';
     const PLAN_OBJECT = 'planObject';
     const PLUGIN = 'plugin';
+    const SCENARIO = 'scenario';
+    const SCENARIOS = 'scenarios';
     const VIEW = 'view';
 }

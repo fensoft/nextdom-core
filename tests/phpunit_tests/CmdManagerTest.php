@@ -67,9 +67,8 @@ class CmdManagerTest extends PHPUnit_Framework_TestCase
 
     public function testByIdWhatNotExists()
     {
-        $cmd = CmdManager::byId(4);
+        $cmd = CmdManager::byId(42);
         $this->assertFalse($cmd);
-
     }
 
     public function testByIdsWithOne()
@@ -89,14 +88,14 @@ class CmdManagerTest extends PHPUnit_Framework_TestCase
 
     public function testByIdsWithOneBad()
     {
-        $cmds = CmdManager::byIds([4, 2]);
+        $cmds = CmdManager::byIds([42, 2]);
         $this->assertEquals(1, count($cmds));
         $this->assertEquals(2, $cmds[0]->getId());
     }
 
     public function testAll() {
         $cmds = CmdManager::all();
-        $this->assertEquals(3, count($cmds));
+        $this->assertEquals(4, count($cmds));
         $this->assertEquals(1, $cmds[0]->getId());
         $this->assertEquals('Cmd 2', $cmds[1]->getName());
         $this->assertEquals('plugin4testsCmd', get_class($cmds[0]));
